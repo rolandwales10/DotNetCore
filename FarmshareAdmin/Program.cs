@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.Negotiate;
 using Serilog.AspNetCore;
 using mdl = FarmshareAdmin.Models;
-using utl = FarmshareAdmin.Utilities;
+using Data = FarmshareAdmin.Data;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -35,7 +35,7 @@ builder.Services.AddAuthorization(options =>
 });
 builder.Services.AddRazorPages();
 
-builder.Services.AddScoped<utl.icLogging, utl.Logging>();
+builder.Services.AddScoped<Data.icRawSql, Data.RawSqlServices>();
 
 var app = builder.Build();
 

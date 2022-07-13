@@ -1,5 +1,4 @@
-﻿
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
 using mdl = FarmshareAdmin.Models;
@@ -9,18 +8,18 @@ using mdl = FarmshareAdmin.Models;
  */
 
 
-namespace FarmshareAdmin.BusinessAreaLayer
+namespace FarmshareAdmin.Data
 {
-    public class GenericRepository<TEntity> where TEntity : class
+    public class GenericRepositoryService<TEntity> where TEntity : class
     {
 
         internal mdl.ACF_FarmshareContext _context;
         internal DbSet<TEntity> dbSet;
 
-        public GenericRepository(mdl.ACF_FarmshareContext context)
+        public GenericRepositoryService(mdl.ACF_FarmshareContext context)
         {
             _context = context;
-            this.dbSet = _context.Set<TEntity>();
+            dbSet = _context.Set<TEntity>();
         }
 
         public virtual void Insert(TEntity entity)

@@ -6,19 +6,19 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using FarmshareAdmin.Models;
-using utl = FarmshareAdmin.Utilities;
+using FarmshareAdmin.Data;
 
 namespace FarmshareAdmin.Pages.SeniorLivingFacilities
 {
     public class DeleteModel : BasePage
     {
         private readonly FarmshareAdmin.Models.ACF_FarmshareContext _context;
-        private utl.Error error;
+        private Error error;
 
-        public DeleteModel(FarmshareAdmin.Models.ACF_FarmshareContext context, utl.icLogging appLog)
+        public DeleteModel(FarmshareAdmin.Models.ACF_FarmshareContext context, ILogger logger)
         {
             _context = context;
-            error = new utl.Error(appLog);
+            error = new Data.Error(logger);
         }
 
         [BindProperty]
@@ -52,7 +52,7 @@ namespace FarmshareAdmin.Pages.SeniorLivingFacilities
                     ModelState.AddModelError("", ex.Message);
                 }
             }
-            else ModelState.AddModelError("", utl.Globals.notAuthorized);
+            else ModelState.AddModelError("", Globals.notAuthorized);
             return Page();
         }
 
@@ -81,7 +81,7 @@ namespace FarmshareAdmin.Pages.SeniorLivingFacilities
                     ModelState.AddModelError("", ex.Message);
                 }
             }
-            else ModelState.AddModelError("", utl.Globals.notAuthorized);
+            else ModelState.AddModelError("", Globals.notAuthorized);
 
             return RedirectToPage("./Index");
         }

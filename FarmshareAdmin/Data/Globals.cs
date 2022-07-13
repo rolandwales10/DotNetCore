@@ -1,7 +1,7 @@
-﻿namespace FarmshareAdmin.Utilities
+﻿namespace FarmshareAdmin.Data
 {
     public class Globals
-    {        
+    {
         // https://www.tutorialrepublic.com/twitter-bootstrap-tutorial/bootstrap-alerts.php
         public const string msgDanger = "danger";
         public const string msgInfo = "info";

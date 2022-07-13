@@ -1,41 +1,40 @@
-﻿
-using mdl = FarmshareAdmin.Models;
-using utl = FarmshareAdmin.Utilities;
-using vm = FarmshareAdmin.ViewModels;
+﻿using mdl = FarmshareAdmin.Models;
 
 /*
  *  This class manages the creation of instances of the FarmshareEntities dbset, and provides a method to save changes.
  *  It can be used to commit changes from one or more entities as a single transaction.
  */
 
-namespace FarmshareAdmin.BusinessAreaLayer
+namespace FarmshareAdmin.Data
 {
     public class UnitOfWork : IDisposable
     {
         public mdl.ACF_FarmshareContext _context;
-        private utl.Error error;
+        ILogger _logger;
+        private Error error;
 
-        public UnitOfWork(mdl.ACF_FarmshareContext context, utl.icLogging logging)
+        public UnitOfWork(mdl.ACF_FarmshareContext context, ILogger logger)
         {
             _context = context;
-            error = new utl.Error(logging);
+            _logger = logger;
+            error = new Error(_logger);
         }
 
-        public async Task<List<vm.VmMessage>> SaveAsync(string locationIdentifier)
+        public async Task<List<Message>> SaveAsync(string locationIdentifier)
         {
-            List<vm.VmMessage> messages = new();
+            List<Message> messages = new();
             try
             {
                 await _context.SaveChangesAsync();
             }
             catch (Microsoft.EntityFrameworkCore.DbUpdateException du)
             {
-                vm.VmMessage.AddErrorMessage(messages, du.InnerException.ToString());
+                MessageService.AddErrorMessage(messages, du.InnerException.ToString());
             }
             catch (Exception ex)
             {
                 error.logError(locationIdentifier, ex);
-                vm.VmMessage.AddErrorMessage(messages, "Database detected error - contact OIT support");
+                MessageService.AddErrorMessage(messages, "Database detected error - contact OIT support");
             }
             return messages;
         }

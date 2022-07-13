@@ -1,24 +1,24 @@
 ﻿
+using FarmshareAdmin.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using bal = FarmshareAdmin.BusinessAreaLayer;
 using mdl = FarmshareAdmin.Models;
-using utl = FarmshareAdmin.Utilities;
-using vm = FarmshareAdmin.ViewModels;
 
 namespace FarmshareAdmin.Pages.SeniorLivingFacilities
 {
     public class EditModel : BasePage
     {
         private readonly mdl.ACF_FarmshareContext _context;
-        private utl.Error error;
-        utl.icLogging _appLog;
+        private Error error;
+        ILogger _logger;
+        //utl.icLogging _appLog;
 
-        public EditModel(mdl.ACF_FarmshareContext context, utl.icLogging appLog)
+        public EditModel(mdl.ACF_FarmshareContext context, ILoggerFactory logger)
         {
             _context = context;
-            _appLog = appLog;
-            error = new utl.Error(appLog);
+            _logger = logger.CreateLogger("logger");
+            //_appLog = appLog;
+            error = new Data.Error(_logger);
         }
 
         [BindProperty]
@@ -46,13 +46,13 @@ namespace FarmshareAdmin.Pages.SeniorLivingFacilities
                     ModelState.AddModelError("", ex.Message);
                 }
             }
-            else ModelState.AddModelError("", utl.Globals.notAuthorized);
+            else ModelState.AddModelError("", Globals.notAuthorized);
             return Page();
         }
 
         public async Task<IActionResult> OnPostAsync()
         {
-            List<vm.VmMessage> messages = new();
+            List<Data.Message> messages = new();
             if (isAdmin())
             {
                 try
@@ -62,24 +62,24 @@ namespace FarmshareAdmin.Pages.SeniorLivingFacilities
                         return Page();
                     }
 
-                    var gr = new bal.GenericRepository<mdl.SENIOR_LIVING_FACILITIES>(_context);
+                    var gr = new Data.GenericRepositoryService<mdl.SENIOR_LIVING_FACILITIES>(_context);
                     if (SENIOR_LIVING_FACILITIES.FACILITY_ID == 0)
                         gr.Insert(SENIOR_LIVING_FACILITIES);
                     else gr.Update(SENIOR_LIVING_FACILITIES);
 
-                    var uw = new bal.UnitOfWork(_context, _appLog);
+                    var uw = new Data.UnitOfWork(_context, _logger);
                     messages = await uw.SaveAsync("Senior Living Facilities");
                 }
                 catch (Exception ex)
                 {
                     error.logError("Error detected in " + this.GetType().Name, ex);
-                    vm.VmMessage.AddErrorMessage(messages, ex.Message);
+                    Data.MessageService.AddErrorMessage(messages, ex.Message);
                 }
             }
-            else ModelState.AddModelError("", utl.Globals.notAuthorized);
+            else ModelState.AddModelError("", Globals.notAuthorized);
             if (messages.Count > 0 || !ModelState.IsValid)
             {
-                utl.ModelErrors.toModel(messages, ModelState);
+                ModelErrorService.toModel(messages, ModelState);
                 return Page();
             }
 

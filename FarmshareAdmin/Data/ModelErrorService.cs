@@ -1,9 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
-using vm = FarmshareAdmin.ViewModels;
 
-namespace FarmshareAdmin.Utilities
+namespace FarmshareAdmin.Data
 {
-    public class ModelErrors
+    /*
+     * toList: converts model state errors to a plain c# structure
+     * toModel: converts Data.Message list to model state errors
+     */
+    public class ModelErrorService
     {
         public class Error
         {
@@ -18,9 +21,9 @@ namespace FarmshareAdmin.Utilities
         }
         public List<Error> toList(ModelStateDictionary ModelState)
         {
-         /*
-          * Capture model errors to send to the client and display to the user
-          */
+            /*
+             * Capture model errors to send to the client and display to the user
+             */
             var errors = new List<Error>();
             var erroneousFields = ModelState.Where(ms => ms.Value.Errors.Any())
                                             .Select(x => new { x.Key, x.Value.Errors });
@@ -35,7 +38,7 @@ namespace FarmshareAdmin.Utilities
             return errors;
         }
 
-        public static void toModel(List<vm.VmMessage> messages, ModelStateDictionary modelState)
+        public static void toModel(List<Message> messages, ModelStateDictionary modelState)
         {
             foreach (var item in messages)
             {

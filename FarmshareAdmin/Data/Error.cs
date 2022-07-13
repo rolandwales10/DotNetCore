@@ -14,16 +14,14 @@ using mdl = FarmshareAdmin.Models;
  */
 
 
-namespace FarmshareAdmin.Utilities
+namespace FarmshareAdmin.Data
 {
     public class Error
     {
-        //mdl.ACF_FarmshareContext _context;
-        //Logging logger;
-        icLogging logger;
-        public Error(icLogging logging)
+        private readonly ILogger _logger;
+        public Error(ILogger logger)
         {
-            logger = logging;
+            _logger = logger;
         }
         public void logError(string referenceLocation, Exception exParm)
         {
@@ -32,21 +30,15 @@ namespace FarmshareAdmin.Utilities
              */
 
             string msg = referenceLocation + "  ";
-            try {
-                /*
-                 *  Look for database detected errors first
-                 */
-                //if (exParm.InnerException != null && exParm.InnerException.InnerException != null)
-                //{
-                //    msg += exParm.InnerException.InnerException.ToString();
-                //}
+            try
+            {
                 if (exParm.Message != null)
                     msg += exParm.Message;
                 else
                     msg += "undetermined error message";
-                logger.writeLog(msg);
+                _logger.LogError(msg);
                 if (exParm.StackTrace != null)
-                    logger.writeLog(exParm.StackTrace);
+                    _logger.LogError(exParm.StackTrace);
                 if (exParm.InnerException != null)
                     getInnerExceptions(exParm.InnerException);
             }
@@ -60,8 +52,8 @@ namespace FarmshareAdmin.Utilities
         {
             string? exception = "";
 
-            exception = (((Exception)comServer).Message);
-            logger.writeLog(exception);
+            exception = ((Exception)comServer).Message;
+            _logger.LogError(exception);
             if (((Exception)comServer).InnerException != null)
             {
                 getInnerExceptions(((Exception)comServer).InnerException);
