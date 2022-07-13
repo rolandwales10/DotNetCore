@@ -1,0 +1,80 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+body {
+    background-color: rgba(234, 243, 243, 0.61); /* RWW  change from FFFFFF - no more white background! */
+    margin-bottom: 2px;
+}
+
+.form-group {
+    margin-bottom: 3px; /* reduce from Bootstrap's 15px */
+}
+
+.form-control {
+    padding-left: 2px;
+    padding-right: 2px;
+    padding-bottom: 6px;
+}
+
+a:link { /* show underlines in all hyperlinks for Accessibility */
+    text-decoration: underline;
+    color: #0e68ca; /* bring the contrast up to 5.0 */
+}
+
+/* Reduce white space: */
+.table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+    Padding: 2px;
+}
+
+.table {
+    margin-bottom: 2px;
+}
+
+.control-label {
+    padding-top: 0px;
+}
+
+label {
+    white-space: pre-wrap;
+    display: inline; /* ancestor is inline-block.  With this, some lables has a new line after every key word */
+    margin-bottom: 0rem; /* some labels are above their text.  Show them close together */
+}
+
+.multi-field-list {
+    font: courier;
+}
+
+.text-danger {
+    color: #c82938 !important; /* bring the contrast up to 5.0 */
+}
+
+.btn-primary {
+    background-color: #0856aa; /* increase the contrast */
+}
+
+/* Home item on navigation bar */
+.navbar {
+    background-color: #ecf6d2;
+    border: 1px solid #4CAF50;
+}
+
+.line-separator {
+    font-size: 2px;
+    color: blue;
+}

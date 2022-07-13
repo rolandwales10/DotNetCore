@@ -1,0 +1,47 @@
+﻿@page
+@model FarmshareAdmin.Pages.SeniorLivingFacilities.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Edit" asp-route-id="0">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.SENIOR_LIVING_FACILITIES[0].FACILITY_NAME)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SENIOR_LIVING_FACILITIES[0].ADDRESS)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SENIOR_LIVING_FACILITIES[0].CITY)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.SENIOR_LIVING_FACILITIES) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FACILITY_NAME)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ADDRESS)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CITY)
+            </td>
+             <td>
+                <a asp-page="./Edit" asp-route-id="@item.FACILITY_ID">Edit</a> |
+                <a asp-page="./Delete" asp-route-id="@item.FACILITY_ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

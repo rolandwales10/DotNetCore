@@ -1,0 +1,3 @@
+﻿This is a collection of reusable scripts
+
+Scaffold-DbContext -NoPluralize -UseDatabaseNames Name=ACF_Farmshare Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models   -Schemas farmshare -force 

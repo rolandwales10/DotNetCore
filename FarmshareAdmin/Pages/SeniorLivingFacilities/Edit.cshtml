@@ -1,0 +1,90 @@
+﻿@page
+@model FarmshareAdmin.Pages.SeniorLivingFacilities.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>SENIOR_LIVING_FACILITIES</h4>
+<hr />
+
+
+<form method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="form-group row">
+        <div class="col-md-3">
+            <label asp-for="SENIOR_LIVING_FACILITIES.FACILITY_ID" class="control-label"></label>
+            <input asp-for="SENIOR_LIVING_FACILITIES.FACILITY_ID" class="form-control" readonly />
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-md-6">
+            <label asp-for="SENIOR_LIVING_FACILITIES.FACILITY_NAME" class="control-label"></label>
+            <input asp-for="SENIOR_LIVING_FACILITIES.FACILITY_NAME" class="form-control" />
+            <span asp-validation-for="SENIOR_LIVING_FACILITIES.FACILITY_NAME" class="text-danger"></span>
+        </div>
+        <div class="col-md-6">
+            <label asp-for="SENIOR_LIVING_FACILITIES.ADDRESS" class="control-label"></label>
+            <input asp-for="SENIOR_LIVING_FACILITIES.ADDRESS" class="form-control" />
+            <span asp-validation-for="SENIOR_LIVING_FACILITIES.ADDRESS" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-md-3">
+            <label asp-for="SENIOR_LIVING_FACILITIES.CITY" class="control-label"></label>
+            <input asp-for="SENIOR_LIVING_FACILITIES.CITY" class="form-control" />
+            <span asp-validation-for="SENIOR_LIVING_FACILITIES.CITY" class="text-danger"></span>
+        </div>
+        <div class="col-md-3">
+            <label asp-for="SENIOR_LIVING_FACILITIES.STATE" class="control-label"></label>
+            <input asp-for="SENIOR_LIVING_FACILITIES.STATE" class="form-control" />
+            <span asp-validation-for="SENIOR_LIVING_FACILITIES.STATE" class="text-danger"></span>
+        </div>
+        <div class="col-md-3">
+            <label asp-for="SENIOR_LIVING_FACILITIES.ZIP" class="control-label"></label>
+            <input asp-for="SENIOR_LIVING_FACILITIES.ZIP" class="form-control" />
+            <span asp-validation-for="SENIOR_LIVING_FACILITIES.ZIP" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-md-6">
+            <label asp-for="SENIOR_LIVING_FACILITIES.CONTACT_NAME" class="control-label"></label>
+            <input asp-for="SENIOR_LIVING_FACILITIES.CONTACT_NAME" class="form-control" />
+            <span asp-validation-for="SENIOR_LIVING_FACILITIES.CONTACT_NAME" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-md-3">
+            <label asp-for="SENIOR_LIVING_FACILITIES.CONTACT_ROLE" class="control-label"></label>
+            <input asp-for="SENIOR_LIVING_FACILITIES.CONTACT_ROLE" class="form-control" />
+            <span asp-validation-for="SENIOR_LIVING_FACILITIES.CONTACT_ROLE" class="text-danger"></span>
+        </div>
+        <div class="col-md-3">
+            <label asp-for="SENIOR_LIVING_FACILITIES.PHONE" class="control-label"></label>
+            <input asp-for="SENIOR_LIVING_FACILITIES.PHONE" class="form-control" />
+            <span asp-validation-for="SENIOR_LIVING_FACILITIES.PHONE" class="text-danger"></span>
+        </div>
+        <div class="col-md-3">
+            <label asp-for="SENIOR_LIVING_FACILITIES.EMAIL" class="control-label"></label>
+            <input asp-for="SENIOR_LIVING_FACILITIES.EMAIL" class="form-control" />
+            <span asp-validation-for="SENIOR_LIVING_FACILITIES.EMAIL" class="text-danger"></span>
+        </div>
+
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Save" class="btn btn-primary" />
+    </div>
+</form>
+
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }

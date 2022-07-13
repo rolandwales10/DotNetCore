@@ -1,0 +1,76 @@
+﻿@page
+@model FarmshareAdmin.Pages.SeniorLivingFacilities.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete Senior Living Facility</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SENIOR_LIVING_FACILITIES.FACILITY_NAME)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SENIOR_LIVING_FACILITIES.FACILITY_NAME)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SENIOR_LIVING_FACILITIES.ADDRESS)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SENIOR_LIVING_FACILITIES.ADDRESS)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SENIOR_LIVING_FACILITIES.CITY)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SENIOR_LIVING_FACILITIES.CITY)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SENIOR_LIVING_FACILITIES.STATE)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SENIOR_LIVING_FACILITIES.STATE)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SENIOR_LIVING_FACILITIES.ZIP)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SENIOR_LIVING_FACILITIES.ZIP)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SENIOR_LIVING_FACILITIES.CONTACT_NAME)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SENIOR_LIVING_FACILITIES.CONTACT_NAME)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SENIOR_LIVING_FACILITIES.CONTACT_ROLE)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SENIOR_LIVING_FACILITIES.CONTACT_ROLE)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SENIOR_LIVING_FACILITIES.PHONE)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SENIOR_LIVING_FACILITIES.PHONE)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SENIOR_LIVING_FACILITIES.EMAIL)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SENIOR_LIVING_FACILITIES.EMAIL)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="SENIOR_LIVING_FACILITIES.FACILITY_ID" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-page="./Index">Back to List</a>
+    </form>
+</div>
