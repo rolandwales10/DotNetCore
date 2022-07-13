@@ -9,7 +9,7 @@ namespace FarmshareAdmin.Pages.SeniorLivingFacilities
     public class EditModel : BasePage
     {
         private readonly mdl.ACF_FarmshareContext _context;
-        private Error error;
+        private ErrorService error;
         ILogger _logger;
         //utl.icLogging _appLog;
 
@@ -18,7 +18,7 @@ namespace FarmshareAdmin.Pages.SeniorLivingFacilities
             _context = context;
             _logger = logger.CreateLogger("logger");
             //_appLog = appLog;
-            error = new Data.Error(_logger);
+            error = new Data.ErrorService(_logger);
         }
 
         [BindProperty]
@@ -67,7 +67,7 @@ namespace FarmshareAdmin.Pages.SeniorLivingFacilities
                         gr.Insert(SENIOR_LIVING_FACILITIES);
                     else gr.Update(SENIOR_LIVING_FACILITIES);
 
-                    var uw = new Data.UnitOfWork(_context, _logger);
+                    var uw = new Data.UnitOfWorkService(_context, _logger);
                     messages = await uw.SaveAsync("Senior Living Facilities");
                 }
                 catch (Exception ex)

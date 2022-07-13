@@ -13,12 +13,12 @@ namespace FarmshareAdmin.Pages.SeniorLivingFacilities
     public class DeleteModel : BasePage
     {
         private readonly FarmshareAdmin.Models.ACF_FarmshareContext _context;
-        private Error error;
+        private ErrorService error;
 
         public DeleteModel(FarmshareAdmin.Models.ACF_FarmshareContext context, ILogger logger)
         {
             _context = context;
-            error = new Data.Error(logger);
+            error = new Data.ErrorService(logger);
         }
 
         [BindProperty]

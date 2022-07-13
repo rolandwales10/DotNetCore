@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using mdl = FarmshareAdmin.Models;
-
-
-/*
+﻿/*
  *  Synopsis: Logs errors.  This is most relevant for database detected errors, where the error
  *      message is in the exception, but not always in the same place within it.
  *  
@@ -13,13 +7,12 @@ using mdl = FarmshareAdmin.Models;
  *  Change log:
  */
 
-
 namespace FarmshareAdmin.Data
 {
-    public class Error
+    public class ErrorService
     {
         private readonly ILogger _logger;
-        public Error(ILogger logger)
+        public ErrorService(ILogger logger)
         {
             _logger = logger;
         }

@@ -7,17 +7,17 @@
 
 namespace FarmshareAdmin.Data
 {
-    public class UnitOfWork : IDisposable
+    public class UnitOfWorkService : IDisposable
     {
         public mdl.ACF_FarmshareContext _context;
         ILogger _logger;
-        private Error error;
+        private ErrorService error;
 
-        public UnitOfWork(mdl.ACF_FarmshareContext context, ILogger logger)
+        public UnitOfWorkService(mdl.ACF_FarmshareContext context, ILogger logger)
         {
             _context = context;
             _logger = logger;
-            error = new Error(_logger);
+            error = new ErrorService(_logger);
         }
 
         public async Task<List<Message>> SaveAsync(string locationIdentifier)
