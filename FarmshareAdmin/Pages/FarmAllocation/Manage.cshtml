@@ -2,13 +2,24 @@
 @model FarmshareAdmin.Pages.FarmAllocation.ManageModel
 @{
 }
+<farm-allocations :context-path="'@Url.Action("","")'"></farm-allocations>
 
 <p>I'm managing!</p>
 
 @section Scripts {
     <script>
-        (function () {
-            farmAllocations();
+        const app = Vue.createApp({})
+
+        app.component('farm-allocations', {
+            mounted() {
+                alert('mounted');
+            }
+        })
+        const mountedApp = app.mount("#RenderBody");
+    </script>
+    <script>
+        (function() {
+            //farmAllocations();
         })();
     </script>
 }

@@ -1,5 +1,8 @@
 ﻿Provides admin functions for Senior Farmshare
 
+to do:
+get senior living facilities delete and index up to date with logging best practice
+
 Created as a .net core 3.1 application using Studio 2022.
 Project type is a .net core web razor pages app.
 
