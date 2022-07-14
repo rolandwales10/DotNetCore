@@ -29,6 +29,7 @@ namespace FarmshareAdmin.Data
             }
             catch (Microsoft.EntityFrameworkCore.DbUpdateException du)
             {
+                error.logError(locationIdentifier, du);
                 MessageService.AddErrorMessage(messages, du.InnerException.ToString());
             }
             catch (Exception ex)
