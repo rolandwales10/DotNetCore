@@ -9,17 +9,27 @@
 @section Scripts {
     <script>
         const app = Vue.createApp({})
+    </script>
 
+    <script>
         app.component('farm-allocations', {
+
             mounted() {
-                alert('mounted');
+                var contextPath = '/';
+                fetch('/api/Cars')
+                // fetch('/Msg?handler=json')
+                    .then(response => response.json())
+                    .then(data => {
+                        var msgs = data;
+                        alert('msgs = ' + msgs);
+                    })
             }
         })
         const mountedApp = app.mount("#RenderBody");
     </script>
     <script>
         (function() {
-            //farmAllocations();
+            //farmAllocations(app);
         })();
     </script>
 }

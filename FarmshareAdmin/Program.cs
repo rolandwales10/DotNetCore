@@ -57,4 +57,11 @@ app.UseAuthorization();
 
 app.MapRazorPages();
 
+app.MapGet("/api/cars", () =>
+{
+    List<Data.Message> msgs = new();
+    msgs.Add(new Data.Message { status = "warning", content = "msg" });
+    return Results.Ok(msgs);
+});
+
 app.Run();

@@ -11,11 +11,15 @@ Software Features:
 - When data is saved, logs exceptions.  See BusinessAreaLayer.UnitOfWork
 - Use of generic methods to update and insert rows in the database.  See BusinessAreaLayer.GenericRepository
 - Role based Active Directory security. See Pages.BasePage
+- Read configuration values in program.cs: builder.Configuration.GetValue<string>("Environment");
+- Read configuration values in a controller: _config.GetValue<string>("Environment");
 - Using the built in logging class to log to a file using Serilog.
 https://github.com/serilog/serilog/wiki/Provided-Sinks
 https://github.com/serilog/serilog-sinks-file
 
-Attempt to write to a database table:
+Issues:
+For Vue 3, we need @Scripts.Render in the cshtml.  Did not succeed in getting this to work.
+Did not succeed in writing logs to a database table.  Here is an attempt:
 
 var logDB = "Server=localhost;Database=ACF_Farmshare;Trusted_Connection=True;MultipleActiveResultSets=true;TrustServerCertificate=True";
 var sinkOpts = new MSSqlServerSinkOptions();

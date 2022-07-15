@@ -26,6 +26,7 @@ namespace FarmshareAdmin.Pages.FarmAllocation
             {
                 if (isAdmin())
                 {
+                    Redirect("/Msg/json");
                 }
                 else return Content(Data.Globals.notAuthorized);
             }

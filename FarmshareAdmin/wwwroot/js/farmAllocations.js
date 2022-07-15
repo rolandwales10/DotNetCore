@@ -1,7 +1,6 @@
-﻿function farmAllocations() {
-    app.component('farm-allocations', {
-        mounted() {
-            alert('mounted');
-        }
-    })
-}
+﻿
+    //app.component('farm-allocations', {
+    //    mounted() {
+    //        alert('mounted');
+    //    }
+    //})
