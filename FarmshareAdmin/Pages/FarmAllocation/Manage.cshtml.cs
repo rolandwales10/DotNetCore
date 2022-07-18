@@ -26,7 +26,7 @@ namespace FarmshareAdmin.Pages.FarmAllocation
             {
                 if (isAdmin())
                 {
-                    Redirect("/Msg/json");
+//                    Redirect("/Msg/json");
                 }
                 else return Content(Data.Globals.notAuthorized);
             }
@@ -40,6 +40,13 @@ namespace FarmshareAdmin.Pages.FarmAllocation
         public void OnPost()
         {
 
+        }
+
+        public JsonResult getJson()
+        {
+            List<Data.Message> msgs = new();
+            msgs.Add(new Data.Message { status = "warning", content = "msg" });
+            return new JsonResult(msgs);
         }
     }
 }

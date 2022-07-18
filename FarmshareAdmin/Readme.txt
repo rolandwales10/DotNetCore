@@ -16,6 +16,7 @@ Software Features:
 - Using the built in logging class to log to a file using Serilog.
 https://github.com/serilog/serilog/wiki/Provided-Sinks
 https://github.com/serilog/serilog-sinks-file
+- An API call in Razor Pages.  Called in FarmAllocation/Manage.
 
 Issues:
 For Vue 3, we need @Scripts.Render in the cshtml.  Did not succeed in getting this to work.

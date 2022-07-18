@@ -16,8 +16,8 @@
 
             mounted() {
                 var contextPath = '/';
-                fetch('/api/Cars')
-                // fetch('/Msg?handler=json')
+                //fetch('/api/Cars')
+                fetch('/farmAllocation/manageJ')
                     .then(response => response.json())
                     .then(data => {
                         var msgs = data;
